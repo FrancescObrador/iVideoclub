@@ -25,7 +25,7 @@
         Para acceder a la gestión del videoclub pulsa el siguiente botón:
       </ion-card-content>
       
-      <ion-button fill="clear"><ion-icon name="videocam" slot="start"/> Acceso a iVideoclub</ion-button>
+      <ion-button fill="clear" [routerLink]="['/videoclub']"><ion-icon name="videocam" slot="start"/> Acceso a iVideoclub</ion-button>
     </ion-card>
     
     <!--Card 2-->
@@ -34,7 +34,7 @@
         <ion-card-title>Información sobre el autor</ion-card-title>
         <ion-card-subtitle>Aplicación desarrollada por Francesc Obrador</ion-card-subtitle>
       </ion-card-header>
-      <ion-button fill="clear"><ion-icon name="person" slot="start"/> Consultar información</ion-button>
+      <ion-button fill="clear" [routerLink]="['/autor']"><ion-icon name="person" slot="start"/> Consultar información</ion-button>
     </ion-card>
   </div>
 </ion-content>
