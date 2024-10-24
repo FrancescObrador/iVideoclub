@@ -20,14 +20,17 @@ export class DetallePage implements OnInit {
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id') || "1";
-    this.pelicula = this.peliculaService.getPelicula(+this.id).subscribe(
-      (result:any) => {
+    this.pelicula = this.peliculaService.getPelicula(+this.id).subscribe({
+      next: (result:any) => {
         this.pelicula = result;
       },
-      (err: any) => {
+      error: (err: any) => {
         console.log(err)
+      },
+      complete: () =>{
+        console.log("Completed")
       }
-    )
+    })
   }
 
   ionViewWillEnter(){
