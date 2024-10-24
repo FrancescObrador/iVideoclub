@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PeliculasService } from '../services/peliculas.service';
+import { PeliculaAPIService } from '../services/pelicula-api.service';
 
 @Component({
   selector: 'app-videoclub',
@@ -9,12 +10,25 @@ import { PeliculasService } from '../services/peliculas.service';
 })
 export class VideoclubPage implements OnInit, OnDestroy {
 
-  listaPeliculas: any[] | undefined
+  listaPeliculas: any[] = []
+  bModoLista: boolean = true
+
   constructor(
     private router: Router,
-    private peliculasService: PeliculasService,
+    private peliculas: PeliculaAPIService,
   ) {
-    this.listaPeliculas = peliculasService.getPeliculas()
+    peliculas.getPeliculas().subscribe(
+      (result: any) =>{
+        this.listaPeliculas = result;
+      },
+      (err: any) => {
+        console.log(err)
+      }
+    )
+  }
+
+  cambiarVista(): void {
+    this.bModoLista = !this.bModoLista;
   }
 
   verPaginaDetalle(id: any) : void {
